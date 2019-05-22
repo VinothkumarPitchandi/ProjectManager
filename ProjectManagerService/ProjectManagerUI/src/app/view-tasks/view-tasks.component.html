@@ -1,0 +1,57 @@
+<div class="container">
+  <h6 id="userMsg"></h6>
+  <div>
+    <label style="display: inline;">Project: </label>
+    <input type="text" placeholder="Please select the project..." [(ngModel)]="Project" style="display: inline; width: 80%;" class="form-control" disabled>
+    <button id="openModalButton" class="form-control" style="display: inline;margin-left: 1%; width: 10%;" (click)="openProjectDialog()">Search</button>
+  </div>
+  <div style="margin-top: 1%;">
+    <label style="display: inline;">Sort Tasks by: </label>
+    <button class="form-control btn btn-info" style="display: inline;margin-left: 1%; width: 15%;" (click)="sortingTask('SDate','StartDate')">Start
+      Date</button>
+    <button class="form-control btn btn-info" style="display: inline;margin-left: 1%; width: 15%;" (click)="sortingTask('EDate','EndDate')">End
+      Date</button>
+    <button class="form-control btn btn-info" style="display: inline;margin-left: 1%; width: 15%;" (click)="sortingTask('Priority','Priority')">Priority</button>
+    <button class="form-control btn btn-info" style="display: inline;margin-left: 1%; width: 15%;" (click)="sortingTask('Completed','Status')">Completed</button>
+  </div>
+  <br>
+  <div *ngFor="let task of filteredList  index as i; odd as isOdd; even as isEven"
+  [class.odd]="isOdd" 
+    [class.even]="isEven">
+    <div class="row">
+      <div class="col-xs-2">
+        <label style="margin-right: 57%">Task</label>
+        <span>{{task.Task}}</span>
+      </div>
+      <div class="col-xs-2">
+        <label style="margin-right: 10%">Parent Task</label>
+        <span>{{task.ParentTask}}</span>
+      </div>
+      <div class="col-xs-2">
+        <label style="margin-right: 57%">Priority</label>
+        <span>{{task.Priority}}</span>
+      </div>
+      <div class="col-xs-2">
+        <label style="margin-right: 8%">Start Date</label>
+        <span>{{task.StartDate | date: 'dd-MM-yyyy'}}</span>
+      </div>
+      <div class="col-xs-2">
+        <label style="margin-right: 8%">End Date</label>
+        <span>{{task.EndDate | date: 'dd-MM-yyyy'}}</span>
+      </div>  
+      <div class="col-xs-2">
+        <button class="btn btn-primary" [disabled]="task.Status" style="width: 45%; height: 29px;"
+          (click)="EditTask(task)">Edit</button>
+
+        <button class="btn btn-danger" [disabled]="task.Status" style="width: 45%; height: 29px; margin-left: 5px;"
+          (click)="EndTask(task)">End
+          Task</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="taskListCount==0">
+    <hr style="border-top: dotted 1px;" />
+    <b>There are no Tasks</b>
+  </div>
+</div>

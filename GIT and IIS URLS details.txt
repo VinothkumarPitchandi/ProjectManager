@@ -1,0 +1,7 @@
+GIT Path : 
+
+Product Manager Service URL :  http://localhost/ProjectManager/API/swagger/ui/index
+
+Product Manager UI : http://localhost/ProjectManager/
+
+
