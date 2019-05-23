@@ -1,4 +1,4 @@
-GIT Path : 
+GIT Path : https://github.com/VinothkumarPitchandi/ProjectManager
 
 Product Manager Service URL :  http://localhost/ProjectManager/API/swagger/ui/index
 
